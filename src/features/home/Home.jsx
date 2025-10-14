@@ -1,60 +1,40 @@
 import CardSkeleton from "../../components/CardSkeleton";
 import { useGetPostsQuery } from "../posts/postApi"
-import { Card, CardHeader, CardBody, Image, CardFooter, Button } from "@heroui/react";
-import RemovePost from "../posts/RemovePost";
-import { useNavigate } from "react-router";
+import {Card, CardHeader, CardBody, Image} from "@heroui/react";
 export default function Home() {
-  const nav = useNavigate();
-  const { isLoading, error, data } = useGetPostsQuery();
-
-  if (isLoading) return <div className="p-5 grid grid-cols-4 gap-5">
-    <CardSkeleton />
-    <CardSkeleton />
-    <CardSkeleton />
-    <CardSkeleton />
-    <CardSkeleton />
-    <CardSkeleton />
-    <CardSkeleton />
-
-  </div>
-  if (error) return <h1 className="text-red-500">{error.data}</h1>
+    const {isLoading, error,data} = useGetPostsQuery();
+    console.log(data);
+    if(isLoading) return <div className="p-5 grid grid-cols-4 gap-5" >
+        <CardSkeleton/>
+        <CardSkeleton/>
+        <CardSkeleton/>
+        <CardSkeleton/>
+        <CardSkeleton/>
+        <CardSkeleton/>
+        <CardSkeleton/>
+        <CardSkeleton/>
+        <CardSkeleton/>
+    </div>
+    if(error) return <h1 className="text-red-500" >{error.data}</h1>
   return (
-    <div className="p-5 grid grid-cols-4 gap-5">
-
-      {data.map((post) => {
-        return <Card className="py-4">
-          <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
-            <p className="text-tiny uppercase font-bold">{post.title}</p>
-            <small className="text-default-500">{post.detail}</small>
-            <h4 className="font-bold text-large">{post.author}</h4>
-          </CardHeader>
-          <CardBody className="overflow-visible py-2">
-            <Image
-              alt="Card background"
-              className="object-cover rounded-xl"
-              src={post.image}
-              width={270}
-            />
-          </CardBody>
-
-          <CardFooter>
-            <div className="flex gap-4 items-center">
-
-              <Button
-                onPress={() => nav(`/update-post/${post.id}`)}
-                isIconOnly aria-label="Take a photo" color="warning" variant="faded">
-                <i className="fa-solid fa-pen-to-square"></i>
-              </Button>
-              <RemovePost id={post.id} />
-
-            </div>
-          </CardFooter>
-
-        </Card>
+    <div className="p-5 grid grid-cols-4 gap-5" >
+      {data.map((post)=>{
+        return <Card key={post.id} className="py-4">
+      <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
+        <p className="text-tiny uppercase font-bold">{post.title}</p>
+        <small className="text-default-500">{post.detail}</small>
+        <h4 className="font-bold text-large">{post.author}</h4>
+      </CardHeader>
+      <CardBody className="overflow-visible py-2">
+        <Image
+          alt="Card background"
+          className="object-cover rounded-xl"
+          src="https://heroui.com/images/hero-card-complete.jpeg"
+          width={270}
+        />
+      </CardBody>
+    </Card>
       })}
-
-
-
     </div>
   )
 }
