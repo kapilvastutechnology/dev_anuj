@@ -17,6 +17,7 @@ export default function Home() {
     </div>
     if(error) return <h1 className="text-red-500" >{error.data}</h1>
   return (
+    <>
     <div className="p-5 grid grid-cols-4 gap-5" >
       {data.map((post)=>{
         return <Card key={post.id} className="py-4">
@@ -36,5 +37,9 @@ export default function Home() {
     </Card>
       })}
     </div>
+
+
+
+    </>
   )
 }

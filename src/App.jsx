@@ -18,8 +18,9 @@ export default function App() {
 
         {
           index: '/add-post',
-          element: <AddPost/>
+          element:<AddPost/>
         }
+        
 
       ]
     }
