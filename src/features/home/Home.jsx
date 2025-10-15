@@ -1,10 +1,13 @@
 import CardSkeleton from "../../components/CardSkeleton";
 import { useGetPostsQuery } from "../posts/postApi"
-import {Card, CardHeader, CardBody, Image} from "@heroui/react";
+import {Card, CardHeader, CardBody, Image, CardFooter} from "@heroui/react";
+import {Button} from "@heroui/react";
+import RemovePost from "../posts/RemovePost";
 export default function Home() {
     const {isLoading, error,data} = useGetPostsQuery();
     console.log(data);
-    if(isLoading) return <div className="p-5 grid grid-cols-4 gap-5" >
+
+    if(isLoading) return <div className="p-5 grid grid-cols-1  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
         <CardSkeleton/>
         <CardSkeleton/>
         <CardSkeleton/>
@@ -18,7 +21,7 @@ export default function Home() {
     if(error) return <h1 className="text-red-500" >{error.data}</h1>
   return (
     <>
-    <div className="p-5 grid grid-cols-4 gap-5" >
+    <div className="p-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5" >
       {data.map((post)=>{
         return <Card key={post.id} className="py-4">
       <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
@@ -30,16 +33,24 @@ export default function Home() {
         <Image
           alt="Card background"
           className="object-cover rounded-xl"
-          src="https://heroui.com/images/hero-card-complete.jpeg"
+          src={post.image}
           width={270}
         />
+        
       </CardBody>
+
+      <CardFooter>
+         <div className="flex gap-4 items-center">
+      <Button
+      isIconOnly variant="faded" color="warning" >
+       <i class="fa-solid fa-pen-to-square"></i>
+      </Button>
+    <RemovePost id={post.id}/>
+    </div>
+      </CardFooter>
     </Card>
       })}
     </div>
-
-
-
     </>
   )
 }

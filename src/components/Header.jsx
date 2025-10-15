@@ -31,7 +31,7 @@ export default function Header() {
       </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem className="hidden lg:flex">
-          <NavLink to={'/add-post'}>Add user</NavLink>
+          <NavLink to={'/add-post'}>Add Post</NavLink>
         </NavbarItem>
 
       </NavbarContent>
