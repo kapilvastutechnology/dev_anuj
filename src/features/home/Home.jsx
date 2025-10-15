@@ -3,7 +3,9 @@ import { useGetPostsQuery } from "../posts/postApi"
 import {Card, CardHeader, CardBody, Image, CardFooter} from "@heroui/react";
 import {Button} from "@heroui/react";
 import RemovePost from "../posts/RemovePost";
+import { useNavigate } from "react-router";
 export default function Home() {
+  const nav = useNavigate();
     const {isLoading, error,data} = useGetPostsQuery();
     console.log(data);
 
@@ -42,6 +44,7 @@ export default function Home() {
       <CardFooter>
          <div className="flex gap-4 items-center">
       <Button
+      onPress={()=> nav(`/update.post/${post.id}`)}
       isIconOnly variant="faded" color="warning" >
        <i class="fa-solid fa-pen-to-square"></i>
       </Button>

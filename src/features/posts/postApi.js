@@ -39,6 +39,15 @@ export const postApi = createApi({
         method:'DELETE'
       }),
       invalidatesTags:['Post']
+    }),
+
+    updatePost: builder.mutation({
+      query: (q)=>({
+        url:`/posts/${q.id}`,
+        body:q.data,
+        method:'PUT'
+      }),
+      invalidatesTags:['Post']
     })
 
   })
@@ -46,4 +55,4 @@ export const postApi = createApi({
 
 // Auto-generated hooks
 export const { useGetPostsQuery, useCreatePostMutation, 
-  useRemovePostMutation, useGetPostQuery } = postApi;
+  useRemovePostMutation, useGetPostQuery, useUpdatePostMutation } = postApi;
