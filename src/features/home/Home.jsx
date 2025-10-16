@@ -48,17 +48,20 @@ export default function Home() {
 
 
 {isLoading && <h1>Loading...</h1>}
-
 {/* Show recipes if they exist */}
 {data && data.recipes && data.recipes.length > 0 && (
-  data.recipes.map((recipe) => (
-    <div key={recipe.id}>
-      <h1>{recipe.name}</h1>
-      <img src={recipe.image} alt={recipe.name} 
-      className="w-[500px] h-[500px]"
-      />
-    </div>
-  ))
+  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+    {data.recipes.map((recipe) => (
+      <div key={recipe.id} className="border p-3 rounded shadow">
+        <h2 className="text-lg font-semibold mb-2">{recipe.name}</h2>
+        <img
+          src={recipe.image}
+          alt={recipe.name}
+          className="w-full h-60 object-cover rounded"
+        />
+      </div>
+    ))}
+  </div>
 )}
 
 {/* Show "No recipe found" only when API call is done and result is empty */}
