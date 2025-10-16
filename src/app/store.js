@@ -4,9 +4,7 @@ import { mealApi } from "../features/meals/mealApi";
 
 export const store = configureStore({
   reducer: {
-    [recipeApi.reducerPath]: recipeApi.reducer,
-    [mealApi.reducerPath]: mealApi.reducer
-
+    
   },
 
   //caching , invalidation, Polling
