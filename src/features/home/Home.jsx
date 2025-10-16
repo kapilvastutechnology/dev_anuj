@@ -33,7 +33,7 @@ export default function Home() {
                 <Input
             onChange={handleChange}
             name="search"
-            placeholder="Search"
+            placeholder="Search Recipes..."
             value={values.search}
             />
             </div>
@@ -47,19 +47,6 @@ export default function Home() {
       </Formik>
 
 
-{/* {isLoading && <h1>Loading</h1>}
-{data && data.recipes.length > 0 ? (
-  data.recipes.map((recipe) => (
-    <div key={recipe.id}>
-      <h1>{recipe.name}</h1>
-      <img src={recipe.image} alt={recipe.name} />
-    </div>
-  ))
-) : (
-  <h1>No recipe found</h1>
-)} */}
-
-
 {isLoading && <h1>Loading...</h1>}
 
 {/* Show recipes if they exist */}
@@ -67,7 +54,9 @@ export default function Home() {
   data.recipes.map((recipe) => (
     <div key={recipe.id}>
       <h1>{recipe.name}</h1>
-      <img src={recipe.image} alt={recipe.name} className="w-[500px] h-[500px]" />
+      <img src={recipe.image} alt={recipe.name} 
+      className="w-[500px] h-[500px]"
+      />
     </div>
   ))
 )}
@@ -82,3 +71,27 @@ export default function Home() {
     </div>
   )
 }
+
+
+
+// import { Button } from "@heroui/button";
+// import { useFilterByCategoryQuery, useGetCategoriesQuery } from "../meals/mealApi"
+
+
+// export default function Home() {
+//   const { isLoading, error, data, refetch } = useFilterByCategoryQuery('Beef');
+//   if (isLoading) return <h1>Loading....</h1>
+//   if (error) return <h1>{error.data}</h1>
+//   console.log(data);
+//   return (
+//     <div>
+//       <Button onPress={refetch}>Refetch</Button>
+
+//     </div>
+//   )
+// }
+
+
+
+
+
