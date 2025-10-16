@@ -1,9 +1,8 @@
 import { createBrowserRouter } from "react-router";
 import { RouterProvider } from "react-router-dom";
-import About from "./pages/about/About.jsx";
 import Contact from "./pages/contact/Contact.jsx";
+import AboutSection from "./pages/about/AboutSection.jsx";
 import Home from "./pages/home/Home.jsx";
-
 import RootLayOut from "./components/RootLayOut.jsx";
 import NotFound from "./pages/not-found/NotFound.jsx";
 
@@ -20,8 +19,9 @@ export default function App() {
 
         {
           path: 'about',
-          element: <About />
+          element:<AboutSection/>
         },
+
         {
           path: 'contact',
           element: <Contact />
