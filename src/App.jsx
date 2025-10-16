@@ -14,9 +14,7 @@ export default function App() {
         {
           index: true,
           element: <Home />
-        },
-
-
+        }
 
       ]
     }
