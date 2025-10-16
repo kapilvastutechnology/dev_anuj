@@ -1,5 +1,5 @@
 
-import { Form, Input } from "@heroui/react";
+import { Button, Form, Input } from "@heroui/react";
 import {Formik} from "formik";
 import { useLazySearchRecipeQuery } from "../recipes/recipeApi";
 import toast from "react-hot-toast";
@@ -24,17 +24,25 @@ export default function Home() {
 
       >
         {({handleChange, handleSubmit, values})=>(
+          
           <Form
           className="max-w-[400px]"
           onSubmit={handleSubmit}
           >
-            <Input
+            <div>
+                <Input
             onChange={handleChange}
             name="search"
             placeholder="Search"
             value={values.search}
             />
+            </div>
+            <Button
+            type="submit"
+            color="primary"
+            >Submit</Button>
           </Form>
+
         )}
       </Formik>
 
