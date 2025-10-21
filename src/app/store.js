@@ -1,14 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { postApi } from "../features/posts/postApi";
+import { dogApi } from "../features/posts/dogApi";
 
 export const store = configureStore({
   reducer: {
-  [postApi.reducerPath]:postApi.reducer
+  [dogApi.reducerPath]:dogApi.reducer
   },
 
   //caching , invalidation, Polling
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat([
-     postApi.middleware
+     dogApi.middleware
     ]),
 });
