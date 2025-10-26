@@ -1,41 +1,26 @@
 {
-  "name": "react-app",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
+  "name": "mern-ashad",
+  "version": "1.0.0",
+  "main": "index.js",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kapilvastutechnology/dev_anuj.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/kapilvastutechnology/dev_anuj/issues"
+  },
+  "homepage": "https://github.com/kapilvastutechnology/dev_anuj#readme",
+  "description": "",
   "dependencies": {
-    "@heroui/button": "^2.2.25",
-    "@heroui/form": "^2.1.26",
-    "@heroui/react": "^2.8.3",
-    "@reduxjs/toolkit": "^2.9.0",
-    "@tailwindcss/vite": "^4.1.12",
-    "axios": "^1.11.0",
-    "formik": "^2.4.6",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1",
-    "react-hot-toast": "^2.6.0",
-    "react-redux": "^9.2.0",
-    "react-router": "^7.8.2",
-    "react-router-dom": "^7.9.4",
-    "tailwindcss": "^4.1.12",
-    "uuid": "^11.1.0",
-    "yup": "^1.7.1"
-  },
-  "devDependencies": {
-    "@eslint/js": "^9.33.0",
-    "@types/react": "^19.1.10",
-    "@types/react-dom": "^19.1.7",
-    "@vitejs/plugin-react": "^5.0.0",
-    "eslint": "^9.33.0",
-    "eslint-plugin-react-hooks": "^5.2.0",
-    "eslint-plugin-react-refresh": "^0.4.20",
-    "globals": "^16.3.0",
-    "vite": "^7.1.2"
+    "axios": "^1.12.2",
+    "express": "^5.1.0"
   }
 }
