@@ -1,7 +1,17 @@
 import express from  'express';
 import productRoutes from './routes/productRoutes.js';
+import mongoose from 'mongoose';
 const app = express();
 const port = 5000;
+
+mongoose.connect('mongodb+srv://Anuj:Anuj2005@anujapi.pcejgp8.mongodb.net/NewShope').then((val)=>{
+    app.listen(port, () => {
+    console.log('connected and server is running');
+});
+}).catch((err)=>{
+    console.log(err);
+})
+
 
 app.use(express.json());
 
@@ -15,7 +25,5 @@ app.get('/', (req,res)=>{
 app.use(productRoutes);
 
 
-app.listen(port, () => {
-    console.log('server is running');
-});
+
 
