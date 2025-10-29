@@ -13,6 +13,28 @@ const productSchema = new mongoose.Schema({
         required: true
     },
 
+    image: {
+        type:String, 
+        required: true
+    },
+
+    category: {
+        type: String,
+        enum: ['food', 'tech','jewallery'],
+        required: true
+    },
+
+    brand: {
+        type: String,
+        enum: ['addidas', 'samsung', 'realme', 'Nokia', 'motrola', 'iphone'],
+        required: true
+    },
+
+    rating: {
+        type: Number,
+        default: 0
+    },
+
     price: {
         type: Number,
         required: true
