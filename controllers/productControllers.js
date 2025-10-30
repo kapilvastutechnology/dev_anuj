@@ -1,5 +1,5 @@
 import Product from "../models/Product.js"
-
+import fs from 'fs';
 export const getProducts = async (req,res)=>{
     try{
         const product = await Product.find({});
@@ -20,25 +20,28 @@ export const getProduct = (req,res)=>{
 }
 
 export const createProduct = async (req,res)=>{
-    const {title,price,detail,image, brand, category} = req.body ?? {};
+    const {title,price,detail,image, brand, category} = 
+    req.body ?? {};
+    console.log(req.imagePath);
     try{
         await Product.create({
             title,
             price,
             detail,
-            image,
+            image:req.imagePath,
             brand,
             category
         });
         return res.status(201).json({
             status: 'Success',
-            data: 'product add successfully'
+            data: 'product added successfully'
         });
-
     } catch(err){
-        return res.status(400).json({
+        fs.unlink(`./uploads/${req.imagePath}`,(error)=>{
+             return res.status(400).json({
             status : 'Error',
             data: err.message
+          })
         })
     }
 }
