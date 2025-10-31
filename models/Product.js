@@ -1,10 +1,9 @@
 import mongoose from 'mongoose';
-
-
 const productSchema = new mongoose.Schema({
 
     title: {
         type:String, 
+        unique: true,
         required: true
     },
 
@@ -41,7 +40,6 @@ const productSchema = new mongoose.Schema({
     }
 
 }, {timestamps: true});
-
 
 const Product = mongoose.model('Product', productSchema);
 

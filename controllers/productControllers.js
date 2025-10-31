@@ -51,6 +51,23 @@ export const updateProduct = (req,res)=>{
 }
 
 
-export const deleteProduct = (req,res)=>{
-    return res.status(200).json({ data: 'delete product' })
-}
+export const deleteProduct = async (req, res) => {
+  try {
+    const isExist = await Product.findById(req.id);
+    if (!isExist) return res.status(404).json({ status: 'error', data: 'product not found' });
+
+
+    fs.unlink(`./uploads/${isExist.image}`, async (err) => {
+
+      await isExist.deleteOne();
+      return res.status(200).json({ status: 'success', data: 'product deleted successfully' })
+    })
+
+  } catch (err) {
+    return res.status(500).json({
+      status: 'error',
+      data: err.message
+    });
+
+  }
+};
