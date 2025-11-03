@@ -11,7 +11,7 @@ createRoot(document.getElementById('root')).render(
   <HeroUIProvider>
     <Provider store={store}>
       <App />
-    <Toaster/>
+      <Toaster/>
     </Provider>
 
   </HeroUIProvider>
