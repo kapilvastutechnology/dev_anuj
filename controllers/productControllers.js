@@ -20,7 +20,7 @@ export const getProduct = (req,res)=>{
 }
 
 export const createProduct = async (req,res)=>{
-    const {title,price,detail,image, brand, category} = 
+    const {title,price,detail, brand, category} = 
     req.body ?? {};
     console.log(req.imagePath);
     try{
@@ -46,15 +46,72 @@ export const createProduct = async (req,res)=>{
     }
 }
 
-export const updateProduct = (req,res)=>{
-    return res.status(200).json({ data: 'update product' })
+
+
+export const updateProduct = async (req, res) => {
+  const { title, price, detail, category, brand } = req.body ?? {};
+  try {
+    const isExist = await Product.findById(req.id);
+    if (!isExist) {
+      if (req.imagePath) {
+        fs.unlinkSync(`./uploads/${req.imagePath}`);
+        return res.status(404).json({ status: 'error', data: 'product not found' });
+      } else {
+        return res.status(404).json({ status: 'error', data: 'product not found' });
+      }
+    }
+
+    isExist.title = title || isExist.title;
+    isExist.price = price || isExist.price;
+    isExist.detail = detail || isExist.detail;
+    isExist.category = category || isExist.category;
+    isExist.brand = brand || isExist.brand;
+    await isExist.save();
+
+    //updating file
+    if (req.imagePath) {
+      fs.unlink(`./uploads/${isExist.image}`, async (err) => {
+        isExist.image = req.imagePath;
+        await isExist.save();
+        return res.status(200).json({
+          status: 'success',
+          data: 'product successfully updated'
+        });
+
+      })
+
+    } else {
+
+      return res.status(200).json({
+        status: 'success',
+        data: 'product successfully updated'
+      });
+    }
+
+
+  } catch (err) {
+    if (req.imagePath) {
+      fs.unlink(`./uploads/${req.imagePath}`, (error) => {
+        return res.status(500).json({
+          status: 'error',
+          data: err.message
+        });
+      })
+    } else {
+      return res.status(500).json({
+        status: 'error',
+        data: err.message
+      });
+    }
+
+  }
 }
 
 
 export const deleteProduct = async (req, res) => {
   try {
     const isExist = await Product.findById(req.id);
-    if (!isExist) return res.status(404).json({ status: 'error', data: 'product not found' });
+    if(!isExist) return res.status(404).json({ status: 'error', data: 'product not found' });
 
 
     fs.unlink(`./uploads/${isExist.image}`, async (err) => {
