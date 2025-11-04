@@ -2,6 +2,7 @@ import express from  'express';
 import productRoutes from './routes/productRoutes.js';
 import mongoose from 'mongoose';
 import fileUpload from 'express-fileupload';
+import userRoutes from './routes/userRoutes.js';
 const app = express();
 const port = 5000;
 
@@ -28,6 +29,7 @@ app.get('/', (req,res)=>{
     });
 });
 
+app.use(userRoutes);
 app.use(productRoutes);
 
 

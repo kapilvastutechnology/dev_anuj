@@ -15,8 +15,24 @@ export const getProducts = async (req,res)=>{
     }
 }
 
-export const getProduct = (req,res)=>{
-    return res.status(200).json({ data: 'Get Single Product'})
+export const getProduct = async (req,res)=>{
+ try {
+    const isExist = await Product.findById(req.id);
+    if(!isExist) return res.status(404).json({
+      status: 'err',
+      data:'Product not found'
+    });
+
+    return res.status(200).json({
+      status: 'success',
+      data: isExist
+    })
+ } catch (err) {
+    return res.status(500).json({
+      status: 'error',
+      data: err.message
+    })
+ }
 }
 
 export const createProduct = async (req,res)=>{
