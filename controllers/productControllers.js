@@ -1,5 +1,6 @@
 import Product from "../models/Product.js"
 import fs from 'fs';
+
 export const getProducts = async (req,res)=>{
     try{
         const product = await Product.find({});
@@ -17,6 +18,7 @@ export const getProducts = async (req,res)=>{
 
 export const getProduct = async (req,res)=>{
  try {
+      const {id} = req.params;
     const isExist = await Product.findById(req.id);
     if(!isExist) return res.status(404).json({
       status: 'err',
@@ -97,7 +99,6 @@ export const updateProduct = async (req, res) => {
       })
 
     } else {
-
       return res.status(200).json({
         status: 'success',
         data: 'product successfully updated'
@@ -144,3 +145,4 @@ export const deleteProduct = async (req, res) => {
 
   }
 };
+

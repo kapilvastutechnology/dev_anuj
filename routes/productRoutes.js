@@ -16,3 +16,5 @@ router.route('/api/products/:id')
 .patch(checkId,updateCheckFile,updateProduct)
 .delete(checkId,deleteProduct).all(notAllowed);
 export default router;
+
+
