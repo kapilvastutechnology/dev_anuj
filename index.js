@@ -4,7 +4,7 @@ import userRoutes from './routes/userRoutes.js';
 import mongoose from 'mongoose';
 import fileUpload from 'express-fileupload';
 import nodemailer from 'nodemailer';
-
+import cors from 'cors';
 const app = express();
 const port = 5000;
 
@@ -16,6 +16,8 @@ mongoose.connect('mongodb+srv://Anuj:Anuj2005@anujapi.pcejgp8.mongodb.net/NewSho
 }).catch((err) => {
   console.log(err);
 });
+
+app.use(cors());
 
 app.use(express.json());
 app.use(fileUpload({
