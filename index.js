@@ -24,6 +24,7 @@ app.use(fileUpload({
   limits: { fileSize: 5 * 1024 * 1024 },
 }));
 
+app.use(express.static('uploads'));
 
 const transporter = nodemailer.createTransport({
   host: 'smtp.gmail.com',

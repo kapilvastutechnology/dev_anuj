@@ -3,10 +3,10 @@ import fs from 'fs';
 
 export const getProducts = async (req,res)=>{
     try{
-        const product = await Product.find({});
+        const products = await Product.find({});
         return res.status(200).json({
             status: 'success',
-            data: product
+             products
         })
     }catch(err){
          return res.status(400).json({
