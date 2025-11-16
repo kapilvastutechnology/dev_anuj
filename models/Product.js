@@ -19,13 +19,13 @@ const productSchema = new mongoose.Schema({
 
     category: {
         type: String,
-        enum: ['food', 'tech','jewallery'],
+        enum: ['food', 'tech','jewallery', 'clothes'],
         required: true
     },
 
     brand: {
         type: String,
-        enum: ['addidas', 'samsung', 'realme', 'Nokia', 'motrola', 'iphone'],
+        enum: ['addidas', 'samsung', 'realme', 'Nokia', 'iphone'],
         required: true
     },
 
