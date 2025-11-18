@@ -140,7 +140,7 @@ export const deleteProduct = async (req, res) => {
   } catch (err) {
     return res.status(500).json({
       status: 'error',
-      data: err.message
+      message: err.message
     });
 
   }
