@@ -111,13 +111,13 @@ export const updateProduct = async (req, res) => {
       fs.unlink(`./uploads/${req.imagePath}`, (error) => {
         return res.status(500).json({
           status: 'error',
-          data: err.message
+          message: err.message
         });
       })
     } else {
       return res.status(500).json({
         status: 'error',
-        data: err.message
+        message: err.message
       });
     }
 
