@@ -83,12 +83,6 @@ app.use(productRoutes);
 
 
 
-
-
-
-
-
-
 // import express from  'express';
 // import productRoutes from './routes/productRoutes.js';
 // import mongoose from 'mongoose';
