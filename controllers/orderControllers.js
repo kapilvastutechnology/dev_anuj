@@ -3,14 +3,45 @@ import Order from "../models/order.js";
 
 export const getOrders = async (req, res) => {
     try {
-        const orders = await Order.find({}).populate({
-            path: 'products.productId',
-            model: 'Product'
-        });
+        if(req.role === 'admin'){
+            const orders = await Order.find({}).populate([
+            {
+                path: 'products.productId',
+                model: 'Product'    
+            },
+            {
+                path: 'userId',
+                model: 'User',
+                select: '-password'
+            }
+        ]);
+
         return res.status(200).json({
             status: 'success',
             orders
         })
+
+        }else{
+
+             const orders = await Order.find({userId: req.userId}).populate([
+            {
+                path: 'products.productId',
+                model: 'Product'    
+            },
+            {
+                path: 'userId',
+                model: 'User',
+                select: '-password'
+            }
+        ]);
+
+        return res.status(200).json({
+            status: 'success',
+            orders
+        })
+
+    }
+        
     } catch (err) {
         return res.status(500).json({
             status: 'error',
