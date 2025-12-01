@@ -6,7 +6,7 @@ export const getOrders = async (req, res) => {
         if(req.role === 'admin'){
             const orders = await Order.find({}).populate([
             {
-                path: 'products.productId',
+                path: 'products.product',
                 model: 'Product'    
             },
             {
@@ -25,7 +25,7 @@ export const getOrders = async (req, res) => {
 
              const orders = await Order.find({userId: req.userId}).populate([
             {
-                path: 'products.productId',
+                path: 'products.product',
                 model: 'Product'    
             },
             {
