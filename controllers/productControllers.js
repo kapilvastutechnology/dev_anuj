@@ -17,6 +17,7 @@ export const getProducts = async (req,res)=>{
 }
 
 export const getProduct = async (req,res)=>{
+
  try {
       const {id} = req.params;
     const isExist = await Product.findById(req.id);
