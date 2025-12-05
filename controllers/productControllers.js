@@ -1,13 +1,70 @@
-import Product from "../models/Product.js"
+import Product, { brands, categories } from "../models/Product.js"
 import fs from 'fs';
 
 export const getProducts = async (req,res)=>{
     try{
-        const products = await Product.find({});
+
+      const exludedFields = ['page','sort','limit','fields','skip', 'search'];
+      let queryObj = {...req.query};
+
+      exludedFields.forEach((val)=>{
+        delete queryObj[val];
+      });
+
+
+        if (req.query.search) {
+      const searchText = req.query.search;
+
+
+      if (categories.some((name) => name.toLowerCase() === searchText.toLowerCase())) {
+        queryObj.category = { $regex: searchText, $options: 'i' };
+
+      } else if (brands.some((name) => name.toLowerCase() === searchText.toLowerCase())) {
+        queryObj.brand = { $regex: searchText, $options: 'i' };
+      } else {
+        queryObj.title = { $regex: searchText, $options: 'i' };
+      }
+
+    }
+
+    const output = Object.entries(queryObj).reduce((acc, [key, value]) => {
+      const match = key.match(/^(.?)\[(.?)\]/);
+      if (match) {
+        const field = match[1];
+        const operator = `$${match[2]}`;
+        const parsedValue = isNaN(value) ? value : Number(value);
+
+        acc[field] = { [operator]: parsedValue };
+      } else {
+        acc[key] = value;
+      }
+      return acc;
+    }, {});
+
+
+        let query =  Product.find(output);
+
+        if(req.query.sort){
+            const sortBy = req.query.sort.split(',').join(' ');
+            query = query.sort(sortBy);
+        }
+
+        if(req.query.fields){
+            const fields = req.query.fields.split(',').join(' ');
+            query = query.select(fields);
+        }
+
+
+        const page = req.query.page || 1;
+        const limit = req.query.limit || 10;
+        const skip = (page-1) * 10;
+
+        const products = await query.skip(skip).limit(limit);
+
         return res.status(200).json({
             status: 'success',
              products
-        })
+        });
     }catch(err){
          return res.status(400).json({
             status : 'Error',
@@ -15,6 +72,7 @@ export const getProducts = async (req,res)=>{
         })
     }
 }
+
 
 export const getProduct = async (req,res)=>{
 
