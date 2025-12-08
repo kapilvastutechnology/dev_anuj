@@ -73,6 +73,30 @@ export const getProducts = async (req,res)=>{
     }
 }
 
+// export const  getProducts = async (req,res)=>{
+//   try{
+//     const excludedFields = ['page', 'limit', 'sort', 'fields'];
+//     let queryObj = {...req.queryObj};
+
+//     excludedFields.forEach((val)=>{
+//         delete queryObj[val];
+//     });
+
+  
+//     const products = await Product.find({});
+
+
+//     return res.status(200).json({
+//       status: 'success',
+//        products
+//     });
+//   }catch(err){
+//      return res.status(400).json({
+//       status : 'Error',
+//       data: err.message
+//     })
+//   }
+// }
 
 export const getProduct = async (req,res)=>{
 
