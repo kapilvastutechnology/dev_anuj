@@ -5,11 +5,13 @@ import orderRoutes from './routes/orderRoutes.js';
 import mongoose from 'mongoose';
 import fileUpload from 'express-fileupload';
 import nodemailer from 'nodemailer';
+import dotenv from 'dotenv';
 import cors from 'cors';
 const app = express();
 const port = 5000;
 
-mongoose.connect('mongodb+srv://Anuj:Anuj2005@anujapi.pcejgp8.mongodb.net/NewShope').then((val) => {
+dotenv.config();
+mongoose.connect(process.env.DB_URL).then((val) => {
   app.listen(port, () => {
     console.log('connected and server is running ');
   });
