@@ -19,7 +19,9 @@ mongoose.connect(process.env.DB_URL).then((val) => {
   console.log(err);
 });
 
-app.use(cors());
+app.use(cors({
+  origin: ['https://frontend-liard-theta-64.vercel.app/','http://localhost:5173']
+}));
 
 app.use(express.json());
 app.use(fileUpload({
