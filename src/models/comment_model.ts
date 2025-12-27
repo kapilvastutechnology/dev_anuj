@@ -22,3 +22,9 @@ export interface Employee{
     age:number
 
 }
+
+export interface NewsModel{
+    title: string,
+    detail: string,
+    image: string
+}
