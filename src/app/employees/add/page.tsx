@@ -1,106 +1,75 @@
-"use client"
+"use client";
 import { Button } from "@/components/ui/button"
 import {
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Spinner } from "@/components/ui/spinner"
-import { addEmployee } from "@/lib/action"
-import { Formik } from "formik"
-import { useRouter } from "next/navigation"
-
-import { useTransition } from "react"
-import toast from "react-hot-toast"
 
 export default function EmployeeAdd() {
-  const [ loading, startTransition] = useTransition();
-  const router = useRouter();
-   return (
+
+  return (
     <Card className="w-full max-w-sm">
       <CardHeader>
         <CardTitle>Add Employee</CardTitle>
         <CardDescription>
           Enter your details
         </CardDescription>
+        
       </CardHeader>
       <CardContent>
-        <Formik
-        initialValues={{
-          name: "",
-          position: "",
-          age: 0
-        }}
 
-        onSubmit={(val)=>{
-          startTransition(async() => {
-          const response =  await addEmployee(val);
-          if(response.success){
-            toast.success(response.message);
-          router.back();
-          }else{
-            toast.error("Failed to add Employee")
-          }
-          
-          });
-
-          
-        }}
-        >
-          {({handleChange,handleSubmit,values})=>(
-            <form
-            onSubmit={handleSubmit}
-            >
+        
+        
+        <form> 
           <div className="flex flex-col gap-6">
             <div className="grid gap-2">
               <Label htmlFor="name">Name</Label>
               <Input
                 id="name"
                 name="name"
-                onChange={handleChange}
-                value={values.name}
-                placeholder="Jhon Doe"
+                placeholder="Jhone Doe"
+       
               />
             </div>
-            
+
             <div className="grid gap-2">
               <Label htmlFor="position">Position</Label>
               <Input
                 id="position"
                 name="position"
-                value={values.position}
-                onChange={handleChange}
-                placeholder="Dev"
+                placeholder="Developer"
+    
               />
             </div>
+
 
             <div className="grid gap-2">
               <Label htmlFor="age">Age</Label>
               <Input
                 id="age"
-                name="age"
+                name="name"
                 type="number"
-                onChange={handleChange}
-                placeholder="90"
+                placeholder="98....."
+    
               />
             </div>
-            {loading ? <Button disabled className="w-full">
-          <Spinner/>
-        </Button> : <Button type="submit" className="w-full">
+
+        <CardFooter className="flex-col gap-2">
+        <Button type="submit" className="w-full">
           Submit
-        </Button> }
+        </Button>
         
-         </div>
+      </CardFooter>
+           
+          </div>
         </form>
-          )}
-        </Formik>
-        
       </CardContent>
-      
     </Card>
   )
 }

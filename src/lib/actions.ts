@@ -1,42 +1,17 @@
-'use server';
+"use server";
 
-import { News } from "@/models/News";
-import { connectDb } from "./db";
+import { Employee } from "@/models/model";
+import axios from "axios";
 
-
-export async function getNews() {
-  await connectDb();
-  try {
-    const news = await News.find({});
-    return { success: true, data: news };
-  } catch (err) {
-    return {
-      success: false,
-      message: 'Failed to get news'
+export async function addEmployee(employee:Employee){
+    try {
+      await axios.post('https://68e33fad8e14f4523dacdbdb.mockapi.io/employee',employee);
+        return {success:true,
+            message:'Employee added successfully'
+        }
+    } catch (err) {
+      return {success:false,
+        message:'failed to added employee'
+      }  
     }
-  }
-}
-
-export async function addNews() {
-  await connectDb();
-  try {
-    await News.create({
-      title: 'title',
-      description: 'description',
-      image: 'image'
-    });
-
-    return {
-      success: true,
-      message: 'News added successfully'
-    }
-  } catch (err) {
-    return {
-      success: false,
-      message: 'Failed to add news'
-    }
-  }
-
-
-
 }

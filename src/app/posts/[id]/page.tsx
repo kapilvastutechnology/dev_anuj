@@ -1,8 +1,13 @@
+interface PostPageProps {
+    id: string
+}
+export default async function PostPage({params} : Promise<PostPageProps>) {
 
-export default function PostPage() {
+    console.log(await params);
   return (
     <div>
       
     </div>
   )
 }
+ 
