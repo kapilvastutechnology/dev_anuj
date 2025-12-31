@@ -1,24 +1,17 @@
 'use client';
-import { Button } from "@/components/ui/button"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Spinner } from "@/components/ui/spinner";
-import { addEmployee } from "@/lib/actions"
-
-import { Formik } from "formik";
-import { useRouter } from "next/navigation";
+import { Employee } from "@/models/model"
 import { useTransition } from "react";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
+import { Formik } from "formik";
+import { Label } from "./ui/label";
+import { Input } from "./ui/input";
+import { Button } from "./ui/button";
+import { Spinner } from "./ui/spinner";
+import { useRouter } from "next/navigation";
+import { updateEmployee } from "@/lib/actions";
 import toast from "react-hot-toast";
 
-
-export default function EmployeeAdd() {
+export default function EditForm({ employee }: { employee: Employee }) {
 
   const [loading, startTransition] = useTransition();
   const router = useRouter();
@@ -26,7 +19,7 @@ export default function EmployeeAdd() {
   return (
     <Card className="w-full max-w-sm">
       <CardHeader>
-        <CardTitle>Add Employee</CardTitle>
+        <CardTitle>Update Employee</CardTitle>
         <CardDescription>
           Enter your details
         </CardDescription>
@@ -36,22 +29,26 @@ export default function EmployeeAdd() {
 
         <Formik
           initialValues={{
-            name: '',
-            position: '',
-            age: 0
+            name: employee.name,
+            position: employee.position,
+            age: employee.age
           }}
           onSubmit={(val) => {
 
             startTransition(async () => {
-
-              const response = await addEmployee(val);
-              if (response.success) {
-                toast.success(response.message);
-                router.back();
-              } else {
-                toast.error('Failed to add employee');
-              }
+        const res = await updateEmployee({
+         ...val,
+         id:employee.id
+                });
+          if(res.success){
+            toast.success(res.message);
+            }else{
+                toast.error(res.message);
+            }
+              
             });
+
+
 
           }}
         >
@@ -85,6 +82,7 @@ export default function EmployeeAdd() {
                   <Input
                     id="age"
                     name="age"
+                    value={values.age}
 
                     onChange={handleChange}
                     type="number"

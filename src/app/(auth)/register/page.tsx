@@ -2,7 +2,7 @@
 export default function Register() {
   return (
     <div>
-      Register
+      <h1>register page</h1>
     </div>
   )
 }

@@ -1,0 +1,34 @@
+'use client'
+
+import { removeEmployee } from "@/lib/actions";
+import { Trash2Icon } from "lucide-react";
+import { useTransition } from "react"
+import { Button } from "./ui/button";
+import toast from "react-hot-toast";
+import { Spinner } from "./ui/spinner";
+
+export default function DeleteEmployee({id}: {id:string}) {
+    const [isPending, startTransition] = useTransition();
+
+    const handleRemove = () => {
+        startTransition(async() => {
+            const res = await removeEmployee(id);
+            if(res.success){
+                toast.success(res.message);
+            }else{
+                toast.error(res.message);
+            }
+        });
+    }
+  return (
+
+    <div>
+        {isPending ? <Button disabled variant={'ghost'}>
+        <Spinner/> loading
+        </Button> : <Button onClick={handleRemove} variant={'ghost'}>
+        <Trash2Icon/>
+        </Button> }
+    </div>
+    
+  )
+}
