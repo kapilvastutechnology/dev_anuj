@@ -11,9 +11,10 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Spinner } from "@/components/ui/spinner";
 import { addEmployee } from "@/lib/actions";
-import { Formik } from "formik";
 import {  useTransition } from "react";
-import toast from "react-hot-toast";
+import { Formik } from 'formik';
+import { toast } from 'react-hot-toast';
+
 
 export default function EmployeeAdd() {
 const [loading,startTransition] = useTransition();
