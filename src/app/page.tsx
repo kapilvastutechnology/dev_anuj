@@ -1,17 +1,17 @@
-import { Comment } from "@/models/model";
 import axios from "axios"
 
 export default async function Home() {
-  const response = await axios.get('https://jsonplaceholder.typicode.com/comments');
-  const comments = response.data;
+  const res = await axios.get('https://dummyjson.com/products');
+  const products = res.data.products;
   return (
-    <div>
-      {comments.map((comment:Comment) => {
-        return <div key={comment.id} className="space-y-5">
-          <h1>name:{comment.name}</h1>
-          <p>body:{comment.body}</p>
+    <div className="grid gap-5 p-5 grid-cols-[repeat(auto-fit,minmax(250px,1fr))]">
+      {products.map((product: any) => (
+        <div key={product.id} >
+          <h2>{product.title}</h2>
+          <img src={product.thumbnail} alt={product.title} />
+          <p>{product.description}</p>
         </div>
-      })}
+      ))}
     </div>
   )
 }
