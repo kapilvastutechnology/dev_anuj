@@ -7,7 +7,7 @@ import { Button } from "./ui/button";
 import toast from "react-hot-toast";
 import { Spinner } from "./ui/spinner";
 
-export default function DeleteEmployee({id}: {id:string}) {
+export default function DeleteEmployee({id} : {id:string}) {
     const [isPending, startTransition] = useTransition();
 
     const handleRemove = () => {

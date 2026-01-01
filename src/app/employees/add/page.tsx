@@ -48,6 +48,7 @@ export default function EmployeeAdd() {
               if (response.success) {
                 toast.success(response.message);
                 router.back();
+                
               } else {
                 toast.error('Failed to add employee');
               }
@@ -70,6 +71,7 @@ export default function EmployeeAdd() {
                     placeholder="John Doe"
                   />
                 </div>
+
                 <div className="grid gap-2">
                   <Label htmlFor="position">Position</Label>
                   <Input
@@ -80,12 +82,12 @@ export default function EmployeeAdd() {
                     placeholder="Dev"
                   />
                 </div>
+
                 <div className="grid gap-2">
                   <Label htmlFor="age">Age</Label>
                   <Input
                     id="age"
                     name="age"
-
                     onChange={handleChange}
                     type="number"
                     placeholder="90"
@@ -93,15 +95,11 @@ export default function EmployeeAdd() {
                 </div>
 
 
-
-
                 {loading ? <Button disabled className="w-full">
                   <Spinner /> Submit
                 </Button> : <Button type="submit" className="w-full">
                   Submit
                 </Button>}
-
-
 
               </div>
             </form>
