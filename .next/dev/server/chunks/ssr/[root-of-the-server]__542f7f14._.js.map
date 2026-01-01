@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 18, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/Anuj%20Bhai/OneDrive/Desktop/mern-ashad/src/app/posts/%5Bid%5D/page.tsx"],"sourcesContent":["\r\nexport default function page() {\r\n  return (\r\n    <div>\r\n      \r\n    </div>\r\n  )\r\n}\r\n"],"names":[],"mappings":";;;;;;AACe,SAAS;IACtB,qBACE,8OAAC;;;;;AAIL"}}]
+}

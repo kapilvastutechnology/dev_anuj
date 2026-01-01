@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 46, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/Anuj%20Bhai/OneDrive/Desktop/mern-ashad/src/app/api/users/route.ts"],"sourcesContent":["import { NextResponse } from \"next/server\";\r\n\r\n\r\nexport async function GET() {\r\n  return NextResponse.json({name:'anuj kumar'}, {status:200});\r\n}\r\n\r\n\r\nexport async function POST(req:Request){\r\n  const body = await req.json();\r\n  console.log(body);\r\n  \r\n  return NextResponse.json({name:'afa'},{status:200});\r\n}"],"names":[],"mappings":";;;;;;AAAA;;AAGO,eAAe;IACpB,OAAO,gJAAY,CAAC,IAAI,CAAC;QAAC,MAAK;IAAY,GAAG;QAAC,QAAO;IAAG;AAC3D;AAGO,eAAe,KAAK,GAAW;IACpC,MAAM,OAAO,MAAM,IAAI,IAAI;IAC3B,QAAQ,GAAG,CAAC;IAEZ,OAAO,gJAAY,CAAC,IAAI,CAAC;QAAC,MAAK;IAAK,GAAE;QAAC,QAAO;IAAG;AACnD"}}]
+}

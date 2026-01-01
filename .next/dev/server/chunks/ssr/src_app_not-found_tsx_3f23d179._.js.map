@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/Anuj%20Bhai/OneDrive/Desktop/mern-ashad/src/app/not-found.tsx"],"sourcesContent":["\r\nexport default function NotFound() {\r\n  return (\r\n    <div>\r\n      <h1>page not found 404 error</h1>\r\n    </div>\r\n  )\r\n}\r\n"],"names":[],"mappings":";;;;;;AACe,SAAS;IACtB,qBACE,8OAAC;kBACC,cAAA,8OAAC;sBAAG;;;;;;;;;;;AAGV"}}]
+}

@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 30, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/Anuj%20Bhai/OneDrive/Desktop/mern-ashad/src/app/employees/%5Bid%5D/page.tsx"],"sourcesContent":["interface UpdatePageProps {\r\n    id:string\r\n}\r\nexport default async function UpdatePage({params}: {params:\r\n    Promise<UpdatePageProps>\r\n}) {\r\n\r\n    const {id} = await params;\r\n    console.log(id);\r\n  return (\r\n    <div>\r\n      \r\n    </div>\r\n  )\r\n}\r\n"],"names":[],"mappings":";;;;;;AAGe,eAAe,WAAW,EAAC,MAAM,EAE/C;IAEG,MAAM,EAAC,EAAE,EAAC,GAAG,MAAM;IACnB,QAAQ,GAAG,CAAC;IACd,qBACE,8OAAC;;;;;AAIL"}}]
+}

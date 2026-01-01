@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 94, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/Anuj%20Bhai/OneDrive/Desktop/mern-ashad/src/app/page.tsx"],"sourcesContent":["\nimport { Comment } from \"@/models/model\";\nimport axios from \"axios\"\n\nexport default async function Home() {\n  const response = await axios.get('https://jsonplaceholder.typicode.com/comments');\n  const comments = response.data;\n  return (\n    <div>\n      {comments.map((comment:Comment) => {\n        return <div key={comment.id} className=\"space-y-5\">\n          <h1>name:{comment.name}</h1>\n          <p>body:{comment.body}</p>\n        </div>\n      })}\n    </div>\n  )\n}\n"],"names":[],"mappings":";;;;;AAEA;;;AAEe,eAAe;IAC5B,MAAM,WAAW,MAAM,gJAAK,CAAC,GAAG,CAAC;IACjC,MAAM,WAAW,SAAS,IAAI;IAC9B,qBACE,8OAAC;kBACE,SAAS,GAAG,CAAC,CAAC;YACb,qBAAO,8OAAC;gBAAqB,WAAU;;kCACrC,8OAAC;;4BAAG;4BAAM,QAAQ,IAAI;;;;;;;kCACtB,8OAAC;;4BAAE;4BAAM,QAAQ,IAAI;;;;;;;;eAFN,QAAQ,EAAE;;;;;QAI7B;;;;;;AAGN"}}]
+}
