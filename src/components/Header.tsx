@@ -1,4 +1,4 @@
-import { SignedOut, SignInButton, SignUpButton } from "@clerk/nextjs";
+import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from "@clerk/nextjs";
 import Link from "next/link";
 
 
@@ -15,6 +15,10 @@ export default function Header() {
         <SignInButton>SignIn</SignInButton>
         <SignUpButton>SignUp</SignUpButton>
       </SignedOut>
+        <Link href={'/news/add'}>Add News</Link>
+      <SignedIn>
+        <UserButton/>
+      </SignedIn>
       </nav>
     </div>
   )
