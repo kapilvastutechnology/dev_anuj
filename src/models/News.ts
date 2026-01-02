@@ -1,6 +1,4 @@
 
-
-
 import mongoose from "mongoose";
 
 const newsSchema = new mongoose.Schema({
@@ -20,5 +18,4 @@ const newsSchema = new mongoose.Schema({
     }
 })
 
-
-export const News = mongoose.model("News", newsSchema);
+export const News = mongoose.models.News || mongoose.model("News", newsSchema);
