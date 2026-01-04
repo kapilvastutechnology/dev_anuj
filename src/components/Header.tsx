@@ -15,9 +15,9 @@ export default function Header() {
         <SignInButton>SignIn</SignInButton>
         <SignUpButton>SignUp</SignUpButton>
       </SignedOut>
-        <Link href={'/news/add'}>Add News</Link>
       <SignedIn>
         <UserButton/>
+        <Link href={'/news/add'}>Add News</Link>
       </SignedIn>
       </nav>
     </div>

@@ -1,6 +1,8 @@
 import DeleteNews from "@/components/DeleteNews";
+import { Button } from "@/components/ui/button";
 import { getNews } from "@/lib/actions"
 import { NewsModel } from "@/models/model";
+import Link from "next/link";
 
 export default async function Home() {
   const res = await getNews();
@@ -11,10 +13,31 @@ export default async function Home() {
         <div key={news._id}>
           <h1>{news.title}</h1>
           <p>{news.description}</p>
+
+          <div className="flex gap-5 mt-5" >
+          <Link href={`/news/${news._id}`}>
+          <Button>Update News</Button></Link>
           <DeleteNews id={news._id.toString()}/>
+          </div>
         </div>
         
       ))}
+
+      <ChildComponent data={{ name: "John", age: 30 }} />
+
     </div>
   )
+}
+
+interface Data {
+  name: string,
+  age: number
+}
+
+function ChildComponent({data}: {data:Data}) {
+  return (
+    <div>
+      <h1>Child Component</h1>
+    </div>
+  );
 }

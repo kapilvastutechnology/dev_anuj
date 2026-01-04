@@ -57,3 +57,39 @@ export async function removeData(id:string){
     }
   }
 }
+
+
+export async function getNewsById(id:string){
+  await connectDb();
+  try {
+    const news = await News.findById(id);
+    return {
+      success:true,
+      data:news
+    };
+  } catch (err) {
+    return {
+      success:false,
+      message:'failed  to get news'
+    }
+  }
+}
+
+
+export async function updateNews(id:string, news:NewsModel){
+  await connectDb();
+  try {
+    await News.findByIdAndUpdate(id,news);
+    revalidatePath('/');
+    return {
+      success:true,
+      message:'News updated successfully'
+    }
+    
+  } catch (err) {
+    return {
+      success:false,
+    message: err.message
+    }
+  }
+}
