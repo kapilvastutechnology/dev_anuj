@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
 import "./globals.css";
+<<<<<<< HEAD
 import Header from "@/components/Header";
 import { Toaster } from "react-hot-toast";
 import { ClerkProvider} from "@clerk/nextjs";
+=======
+
+>>>>>>> 95909d63cceb9a0a92a5262051610015c50af37d
 
 
 export const metadata: Metadata = {
@@ -19,11 +23,15 @@ export default function RootLayout({
     <ClerkProvider>
     <html lang="en">
       <body>
+<<<<<<< HEAD
         <Header/>
         <main className="p-5" >
               {children}
         </main>
          <Toaster toastOptions={{ duration: 1000 }}/>
+=======
+        {children}
+>>>>>>> 95909d63cceb9a0a92a5262051610015c50af37d
       </body>
     </html>
     </ClerkProvider>
