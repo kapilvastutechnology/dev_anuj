@@ -153,6 +153,19 @@ import fs from 'fs';
 //   }
 // }
 
+
+
+export const getTop5Products = async (req, res) => {
+  try {
+    const products = await Product.find({ rating: { $gt: 4 } }).limit(5);
+    return res.status(200).json(products);
+  } catch (err) {
+    return res.status(500).json({ status: 'error', message: err.message });
+  }
+}
+
+
+
 export const getProducts = async (req, res) => {
   try {
 

@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 30, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/Anuj%20Bhai/OneDrive/Desktop/mern-ashad/src/app/page.tsx"],"sourcesContent":["\nexport default async function Home() {\n  const res = await axios.get('');\n  const employees = res.data;\n  console.log(employees);\n  return (\n    <div>\n      \n    </div>\n  )\n}\n"],"names":[],"mappings":";;;;;;AACe,eAAe;IAC5B,MAAM,MAAM,MAAM,MAAM,GAAG,CAAC;IAC5B,MAAM,YAAY,IAAI,IAAI;IAC1B,QAAQ,GAAG,CAAC;IACZ,qBACE,8OAAC;;;;;AAIL"}}]
-}

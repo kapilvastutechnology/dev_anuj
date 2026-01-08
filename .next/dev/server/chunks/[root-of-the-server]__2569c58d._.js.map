@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 46, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/Anuj%20Bhai/OneDrive/Desktop/mern-ashad/src/app/api/products/route.ts"],"sourcesContent":["// import { NextRequest, NextResponse } from \"next/server\";\r\n\r\nimport { NextRequest, NextResponse } from \"next/server\";\r\n\r\n\r\n// export async function GET(req:NextRequest){\r\n//     const m = req.nextUrl.searchParams;\r\n//     console.log(m.get('name'));\r\n//     return NextResponse.json({\r\n//         status:200\r\n//     });\r\n// }\r\n\r\n\r\n\r\n\r\nexport async function GET(req:NextRequest){\r\n\r\n    const params = req.nextUrl.searchParams;\r\n    console.log(params.get('number'));\r\n\r\n\r\n    return NextResponse.json({status: 'success'});\r\n}\r\n\r\n\r\n\r\n\r\nexport async function POST(req:Request){\r\n    const a = await req.json();\r\n    console.log(a);\r\n    return NextResponse.json({status:200});\r\n}\r\n\r\n\r\n\r\n"],"names":[],"mappings":";;;;;;AAAA,2DAA2D;AAE3D;;AAcO,eAAe,IAAI,GAAe;IAErC,MAAM,SAAS,IAAI,OAAO,CAAC,YAAY;IACvC,QAAQ,GAAG,CAAC,OAAO,GAAG,CAAC;IAGvB,OAAO,gJAAY,CAAC,IAAI,CAAC;QAAC,QAAQ;IAAS;AAC/C;AAKO,eAAe,KAAK,GAAW;IAClC,MAAM,IAAI,MAAM,IAAI,IAAI;IACxB,QAAQ,GAAG,CAAC;IACZ,OAAO,gJAAY,CAAC,IAAI,CAAC;QAAC,QAAO;IAAG;AACxC"}}]
-}

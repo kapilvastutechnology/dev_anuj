@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 102, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/Anuj%20Bhai/OneDrive/Desktop/mern-ashad/src/app/employees/%5Bid%5D/page.tsx"],"sourcesContent":["import axios from \"axios\";\r\n\r\ninterface UpdatePageProps {\r\n    id:string\r\n}\r\nexport default async function UpdatePage({params}: {params:\r\n    Promise<UpdatePageProps>\r\n}) {\r\n\r\n    const {id} = await params;\r\n    const res = await axios.get(`https://68e33fad8e14f4523dacdbdb.mockapi.io/employee/${id}`);\r\n    console.log(res.data);\r\n  return (\r\n    <div>\r\n      \r\n    </div>\r\n  )\r\n}\r\n"],"names":[],"mappings":";;;;;AAAA;;;AAKe,eAAe,WAAW,EAAC,MAAM,EAE/C;IAEG,MAAM,EAAC,EAAE,EAAC,GAAG,MAAM;IACnB,MAAM,MAAM,MAAM,gJAAK,CAAC,GAAG,CAAC,CAAC,qDAAqD,EAAE,IAAI;IACxF,QAAQ,GAAG,CAAC,IAAI,IAAI;IACtB,qBACE,8OAAC;;;;;AAIL"}}]
-}
