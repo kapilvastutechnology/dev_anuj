@@ -1,5 +1,5 @@
-import Link from "next/link";
 
+import Link from "next/link";
 
 export default function Header() {
   return (
@@ -8,6 +8,7 @@ export default function Header() {
       <nav>
         <Link  href={'/posts/add'}>Add News</Link>
       </nav>
+     
     </div>
   )
 }
