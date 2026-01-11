@@ -1,5 +1,5 @@
-import Review from "../models/Review.js";
 
+import Review from "../models/Review.js";
 
 export const getReviews = async (req, res) => {
     try {
@@ -20,7 +20,7 @@ export const getReviews = async (req, res) => {
 }
 
 export const createReview = async (req, res) => {
-    const { rating, comment, product,user} = req.body ?? {};
+    const { rating, comment, product} = req.body ?? {};
         try {
             await Review.create({
                 rating,
@@ -29,10 +29,12 @@ export const createReview = async (req, res) => {
                 user:req.userId
             });
 
+
             return res.status(201).json({
                 status: 'success',
                 message: 'review created successfully'
             });
+
         } catch (err) {
             return res.status(500).json({
                 status: 'error',
@@ -40,3 +42,4 @@ export const createReview = async (req, res) => {
             });
         }
 }
+

@@ -6,5 +6,8 @@ import { checkUser } from '../middlewares/checkUser.js';
 
 const router = express.Router();
 
-router.route('/api/reviews').post(checkUser,createReview);
-router.route('/api/reviews/:id').get(getReviews).all(notAllowed);
+router.route('/api/reviews')
+.post(checkUser,createReview),all(notAllowed);
+
+router.route('/api/reviews/:id')
+.get(getReviews).all(notAllowed);

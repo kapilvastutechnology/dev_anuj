@@ -8,7 +8,8 @@ import { checkAdmin, checkUser } from '../middlewares/checkUser.js';
 
 const router = express.Router();
 
-router.route('/api/top-5').get(getTop5Products).all(notAllowed);
+router.route('/api/top-5')
+.get(getTop5Products).all(notAllowed);
 
 router.route('/api/products')
 .get(getProducts)
